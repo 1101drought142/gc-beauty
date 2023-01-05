@@ -125,11 +125,17 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+USE_I18N = True
+USE_L10N = False
+
+LANGUAGE_CODE = 'ru-RU'
+
+# Пример вывода: 16 сентября 2012 
+DATE_FORMAT = 'd E Y'
 
 TIME_ZONE = 'UTC'
 
-USE_I18N = True
+
 
 USE_TZ = True
 

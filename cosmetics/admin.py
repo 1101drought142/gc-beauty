@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.admin.options import TabularInline
-from .models import ItemCategories, Item, Certificates, Banners, Tags, Types, Team, Photos
+from .models import ItemCategories, Item, Certificates, Banners, Tags, Types, Team, Photos, CallbackForm
 # Register your models here.
 
 admin.site.register(ItemCategories)
@@ -9,6 +9,10 @@ admin.site.register(Banners)
 admin.site.register(Tags)
 admin.site.register(Types)
 admin.site.register(Team)
+
+class CallbackFormAdmin(admin.ModelAdmin):
+    readonly_fields = ('created_time',)
+admin.site.register(CallbackForm, CallbackFormAdmin)
 
 
 class ImageAdminInline(TabularInline):

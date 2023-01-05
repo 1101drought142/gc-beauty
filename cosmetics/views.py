@@ -1,9 +1,9 @@
-from django.views.generic import TemplateView, ListView
-from django.views.generic.edit import FormMixin
+from django.views.generic import TemplateView, View
+from django.views.generic.edit import CreateView
 from django.http import JsonResponse
 from django.core import serializers
 from django.http import Http404, HttpResponse
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django.db.models import Q
 from .models import ItemCategories, Item, Certificates, Banners, Team, Photos, Tags, Types, CallbackForm
 from .session_stored_products import Cart_Session, Liked_Session
@@ -237,13 +237,21 @@ class AjaxSearch(TemplateView):
 
         return context
 
-class FormResult(TemplateView):
-    template_name = "search.html"
-
-    def get_context_data(self, *args, **kwargs):
-        
-        context = super(AjaxSearch, self).get_context_data(*args, **kwargs)
-        if (self.request.GET.get("search_string")):
-            context["catalog_items"] = Item.objects.filter(name__icontains=self.request.GET.get("search_string")).order_by("sort")
-
-        return context
+class FormResult(View):
+    def post(self, request, *args, **kwargs):
+        form = ContactForm(request.POST)
+        print(request)
+        if form.is_valid():
+            try:
+                creted_object = CallbackForm.objects.create(name=form.cleaned_data["name"], phone=form.cleaned_data["phone"])
+                return render(request, "created.html",
+                    {
+                        "name" : creted_object.name,
+                        "phone": creted_object.phone,
+                        "date": creted_object.created_time,
+                        "id": creted_object.pk
+                    }
+                )
+            except:
+                return HttpResponse(2)
+        return HttpResponse(3)
