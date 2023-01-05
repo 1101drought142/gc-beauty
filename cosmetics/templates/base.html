@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="{% static 'css/index.css' %}" >
+  <title>GC</title>
+</head>
+
+<body>
+
+  <div class="preloader">
+    <div class="preloader-wrap">
+      <img src="/img/index/preloaderImg.svg" alt="" class="preloader__logo">
+    </div>
+  </div>
+
+  <div class="cart-added overscreen">
+    <img src="/static/img/shared/cartWhite.svg" alt="" class="cart-added__img">
+    <div class="cart-added-content">
+      <div class="cart-added-content__title">Товар добавлен в корзину</div>
+      <a href="/cart" class="cart-added-content__go">Перейти</a>
+    </div>
+  </div>
+
+  <div class="modal-bg"></div>
+
+  <div class="burger overscreen">
+    <div class="burger-top">
+      <div class="burger-top-search">
+        <button class="burger-top-search__btn"><img src="{% static '/img/shared/search.svg' %}"></button>
+        <input type="text" class="burger-top-search__input">
+        <div class="search-menu"></div>
+      </div>
+      <button class="burger-top__close">&times;</button>
+    </div>
+    <div class="burger-menu">
+      <div class="burger-menu-column">
+        <a href="/" class="burger-menu__category">Главная</a>
+        <a href="/catalog/" class="burger-menu__category">Каталог</a>
+        <a href="/catalog/" class="burger-menu__subcategory">Для волос</a>
+      </div>
+      <div class="burger-menu-column">
+        <a href="/company/" class="burger-menu__category">О бренде</a>
+        <a href="/payment/" class="burger-menu__category">Оплата</a>
+        <a href="/shipping/" class="burger-menu__category">Доставка</a>
+        <a href="/garantees/" class="burger-menu__category">Гарантии и возврат</a>
+        <a href="/contacts/" class="burger-menu__category">Контакты</a>
+        <div class="burger-menu__questions">Возникли вопросы?</div>
+        <a href="tel:88008008080" class="burger-menu__contact">8 800 800 80 80</a>
+        <a href="mailto:info@website.ru" class="burger-menu__contact">info@website.ru</a>
+        <a href="tg.gg" class="burger-menu__contact">telegram</a>
+      </div>
+    </div>
+  </div>
+
+
+
+    <!-- 
+    <a class="search-menu__item">
+      <img src="" alt="" class="search-menu__item--img">
+      <div class="search-menu__item-content">
+        <p class="search-menu__item--title">Cleaner shampoo</p>
+        <p class="search-menu__item--price">1600 ₽</p>
+      </div>
+    </a>-->
+
+  <header class="header-sec">
+    <div class="container">
+      <div class="header">
+        <div class="header-burger header__burger">
+          <span class="header-burger__line"></span>
+        </div>
+        <a href="/" class="header__logo header-logo">
+          <img src="{% static '/img/shared/logoBlack.svg' %}" alt="" class="header-logo__img">
+        </a>
+        <div class="header-btns">
+          <a href="/favourites/" class="header-btns__favorite">
+            <img src="{% static '/img/shared/favoritesBlack.svg' %}" alt="">
+          </a>
+          <a href="/cart/" class="header-btns__cart">
+            <img src="{% static '/img/shared/cartBlack.svg' %}" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  {% block content %}
+
+
+  {% endblock %}
+  <footer class="footer-sec">
+    <div class="container">
+      <div class="footer">
+        <a href="/" class="footer__logo footer-logo">
+          <img src="/static/img/shared/logoBlack.svg" alt="" class="footer-logo__img">
+        </a>
+          <ul class="footer-list">
+            <li class="footer-list__item"><a href="/company/">О компании</a></li>
+            <li class="footer-list__item"><a href="/shipping/">Доставка и оплата</a></li>
+            <li class="footer-list__item"><a href="/catalog/">Каталог</a></li>
+            <li class="footer-list__item"><a href="/contacts/">Контакты</a></li>
+          </ul>
+          <ul class="footer-list">
+            <li class="footer-list__item"><a href="tel:88008008080">8 800 800 08 08</a></li>
+            <li class="footer-list__item"><a href="mailto:info@website.ru">info@website.ru</a></li>
+          </ul>
+          <img src="/static/img/shared/payLogos.png" alt="" class="footer__payment">
+          <div class="footer-policy-list">
+            <a href="/" class="footer-policy-list__item">Пользовательское соглашение</a>
+            <a href="/" class="footer-policy-list__item">Политика обработки персональных данных</a>
+          </div>
+          <div class="footer-copyright">© 2022</div>
+      </div>
+    </div>
+  </footer>
+
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script src="{% static '/js/jqry.js' %}"></script>
+<script src="{% static '/js/api.js' %}" type="module"></script>
+<script src="{% static '/js/shared.js' %}" type="module"></script>
+<script src="{% static '/js/index.js' %}" type="module"></script>
+{% for link in extra_js_links %}
+<script src="{% static link %}" type="module"></script>
+{% endfor %}
+</html>

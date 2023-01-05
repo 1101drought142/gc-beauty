@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static '/css/about.css' %}">
+<link rel="stylesheet" href="{% static '/css/service.css' %}">
+<main>
+    <section class="hero-sec about-hero-sec service-hero-sec" style="background-image: url({% static '/img/service/deliveryBg.jpg' %});">
+      <div class="container">
+        <div class="about-hero">
+          {% include "breadcrumbs_service.html" %}
+        </div>
+      </div>
+    </section>
+
+    <section class="service-sec">
+      <div class="container">
+        <div class="service">
+          <h2 class="service__title">Доставка</h2>
+          <h4 class="service__subtitle">Быстрая и надежная доставка по всей России</h4>
+          <p class="service__text">В CG Вы всегда можете выбрать наиболее удобный способ доставки. Минимальные сроки и стоимость доставки по всей России, особые условия для клиентов из Москвы и Санкт-Петербурга.</p>
+          <h4 class="service__subtitle">Бесплатно по всей России</h4>
+          <p class="service__text">При заказе на сумму от 3000 рублей для Москвы и 5000 рублей для РФ мы доставим Ваш заказ бесплатно. При заказе суммой меньше, стоимость для Москвы - 300 рублей, для остальных регионов РФ рассчитывается автоматически при оформлении заказа по тарифам транспортной компании. Также при оформлении заказа вы можете выбрать ближайший постамат Boxberry. Доставка осуществляется только при указании в заказе точного адреса и ФИО получателя.</p>
+          <h4 class="service__subtitle">Самовывоз</h4>
+          <p class="service__text">Забрать заказ самостоятельно можно из нашего офиса по будням с 10 до 18 часов после подтверждения менеджера: г. Москва, м. 1905г, Столярный переулок, д. 3, стр. 13, 5 этаж.</p>
+        </div>
+      </div>
+    </section>
+
+    {% include "connect_footer_form.html" %}
+</main>
+{% endblock %}

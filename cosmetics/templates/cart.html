@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static '/css/service.css' %}">
+<link rel="stylesheet" href="{% static '/css/cart.css' %}">
+<main>
+    <section class="cart-sec">
+        <div class="container">
+        <h1 class="cart__title">Моя корзина</h1>
+        {% include "cart_page_content.html" %}
+        
+        </div>
+    </section>
+</main>
+{% endblock %}

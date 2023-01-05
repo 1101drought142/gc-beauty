@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="/static/css/catalog.css">
+<main>
+<section class="catalog-sec">
+    <div class="container">
+      <form class="catalog">
+        <h2 class="catalog__title">Каталог</h2>
+        <div class="catalog-btns">
+          <input type="radio" style="display: none;" name="section" id="2asda" checked value="0" name="section" class="catalog-btns__input"  data-category="0">
+          <label class="catalog-btns__item" for="2asda" value="0">Все товары</label>
+          {% include "categories.html" %} 
+        </div>
+        <div class="catalog-filter__btn">
+          <div class="catalog-filter__btn-lines"><span></span><span></span><span></span></div>
+           <p>Фильтр</p>
+        </div>
+        <div class="catalog-filter">
+          <div class="catalog-filter-row">
+            {% for type in types %}
+            <input type="radio" id="types_{{type.id}}" name="type" value="{{type.id}}" class="catalog-filter__input">
+            <label for="types_{{type.id}}" class="catalog-filter__label catalog-btns__item">{{type.name}}</label>  
+            {% endfor %}
+          </div>
+          <div class="catalog-filter-row">
+            {% for tag in tags %}
+            <input type="checkbox" id="tags_{{tag.id}}" name="tag" value="{{tag.id}}" class="catalog-filter__input">
+            <label for="tags_{{tag.id}}" class="catalog-filter__label catalog-btns__item">{{tag.name}}</label>  
+            {% endfor %}
+          </div>
+        </div>
+        <div class="catalog-wrap">
+            {% include "items.html" %}
+        </div>
+        {% if show_more_button %}
+        <a href="/" class="btn catalog__showmore">Показать ещё</a>
+        {% endif %}
+      </form>
+    </div>
+  </section>
+
+  {% include "care_sec_content.html" %}
+</main>
+{% endblock %}

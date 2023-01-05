@@ -1,0 +1,32 @@
+{% load static %}
+<div class="cart">
+    {% for key,item in catalog_items.items %}
+    <a href="/catalog-item/{{item.slug}}/" class="cart-item item-with-id" id="{{key}}">
+        <img src="{{item.picture}}" alt="" class="cart-item__img">
+        <div class="cart-item-content">
+            <div class="cart-item-content__title">{{item.name}}</div>
+            <div class="cart-item-content__category">Shampun dlya volos</div>
+            <div class="cart-item-content__price"><span class="single-price">{{item.price}}</span> ₽</div>
+        </div>
+
+        <div class="counter cart-item-counter">
+            <span class="counter-minus cart-item-counter__minus click-to-recalc">-</span>
+            <span class="counter-count cart-item-counter__count">{{item.quantity}}</span>
+            <span class="counter-plus cart-item-counter__plus click-to-recalc">+</span>
+        </div>
+        <div class="cart-item__price"><span class="total-single-price">{{ item.item_price }}</span> ₽</div>
+        <div class="cart-item__delete click-to-recalc"><img src="{% static '/img/shared/close.svg' %}"></div>
+    </a>
+    {% endfor %}
+</div>
+<a href="/" class="cart__back">Вернуться к покупкам</a>
+<div class="cart-total">
+    <div class="cart-total__text">
+    <div>Итого:</div>
+    <div><span class="final-cart-price">{{price}}</span>₽</div>
+    </div>
+    <a href="/" class="btn btn-with-arrow cart-total__btn">
+    <span class="btn__span">Оформить заказ</span>
+    <img src="{% static '/img/shared/rightArrowTotalBlack.svg' %}" class="btn__arrow">
+    </a>
+</div>

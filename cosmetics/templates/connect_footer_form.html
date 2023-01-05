@@ -1,0 +1,19 @@
+{% load static %}
+
+<section class="contact-sec">
+    <div class="container">
+      <h4 class="contact__title">Свяжитесь с нами, если у Вас возникли вопросы</h4>
+      <form action="/api/contact_form/" type="POST" class="contact-form">
+        {% csrf_token %}
+        {% for field in footer_form %}
+        <input type="text" placeholder="{{ field.help_text|safe }}" name="{{field.name}}" id="{{field.id_for_label}}" class="contact-form__input">
+        {% endfor %}
+        <button class="btn btn-with-arrow contact__button" type="submit">
+          <span class="btn__span contact__button--span">Перейти</span>
+            <img src="{% static '/img/shared/rightArrowTotalBlack.svg' %}" alt="" class="btn__arrow contact__button--arrow">
+        </button>
+      </form>
+      
+      
+    </div>
+</section>

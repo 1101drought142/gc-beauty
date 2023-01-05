@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <main>
+        <section class="hero-sec hero-sec-index">
+          <div class="swiper hero-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide hero-swiper__slide">
+                <img src="{% static '/img/index/heroBg.jpg' %}" alt="">
+                <div class="hero">
+                    <h1 class="hero__title">CONTOURING HAIR CARE SET</h1>
+                    <p class="hero__subtitle">Шампунь + Кондиционер для волос</p>
+                    <p class="hero__text">Идеальный уход и питание для волос и кожи головы</p>
+                    <a href="/" class="btn btn-with-arrow hero__button">
+                      <span class="btn__span hero__button--arrow">Перейти</span>
+                      <img src="/static/img/shared/rightArrowBlack.svg" alt="" class="btn__arrow hero__button--arrow">
+                    </a>
+                </div>
+              </div>
+              <div class="swiper-slide hero-swiper__slide">
+                <img src="{% static '/img/index/heroBg.jpg' %}" alt="">
+                <div class="hero">
+                    <h1 class="hero__title">CONTOURING HA3IR CARE SET</h1>
+                    <p class="hero__subtitle">Шампунь + Кондиционер для волос</p>
+                    <p class="hero__text">Идеальный уход и питание для волос и кожи головы</p>
+                    <a href="/" class="btn btn-with-arrow hero__button">
+                      <span class="btn__span hero__button--arrow">Перейти</span>
+                      <img src="/static/img/shared/rightArrowBlack.svg" alt="" class="btn__arrow hero__button--arrow">
+                    </a>
+                </div>
+              </div>
+              <div class="swiper-slide hero-swiper__slide">
+                <img src="{% static '/img/index/heroBg.jpg' %}" alt="">
+                <div class="hero">
+                    <h1 class="hero__title">CONTOURING HA2IR CARE SET</h1>
+                    <p class="hero__subtitle">Шампунь + Кондиционер для волос</p>
+                    <p class="hero__text">Идеальный уход и питание для волос и кожи головы</p>
+                    <a href="/" class="btn btn-with-arrow hero__button">
+                      <span class="btn__span hero__button--arrow">Перейти</span>
+                      <img src="/static/img/shared/rightArrowBlack.svg" alt="" class="btn__arrow hero__button--arrow">
+                    </a>
+                </div>
+              </div>
+              <div class="swiper-slide hero-swiper__slide">
+                <img src="{% static '/img/index/heroBg.jpg' %}" alt="">
+                <div class="hero">
+                    <h1 class="hero__title">CONTOURING HAaIR CARE SET</h1>
+                    <p class="hero__subtitle">Шампунь + Кондиционер для волос</p>
+                    <p class="hero__text">Идеальный уход и питание для волос и кожи головы</p>
+                    <a href="/" class="btn btn-with-arrow hero__button">
+                      <span class="btn__span hero__button--arrow">Перейти</span>
+                      <img src="/static/img/shared/rightArrowBlack.svg" alt="" class="btn__arrow hero__button--arrow">
+                    </a>
+                </div>
+              </div>
+              <div class="swiper-slide hero-swiper__slide">
+                <img src="{% static '/img/index/heroBg.jpg' %}" alt="">
+                <div class="hero">
+                    <h1 class="hero__title">CONTOURING HAIR CAsRE SET</h1>
+                    <p class="hero__subtitle">Шампунь + Кондиционер для волос</p>
+                    <p class="hero__text">Идеальный уход и питание для волос и кожи головы</p>
+                    <a href="/" class="btn btn-with-arrow hero__button">
+                      <span class="btn__span hero__button--arrow">Перейти</span>
+                      <img src="/static/img/shared/rightArrowBlack.svg" alt="" class="btn__arrow hero__button--arrow">
+                    </a>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-pagination lines-pagination hero-swiper__pagination"></div>
+          
+          </div>
+          <!-- <div class="container">
+          </div> -->
+        </section>
+    
+        <section class="catalog-sec">
+          <div class="container">
+            <div class="catalog">
+              <h2 class="catalog__title">Каталог</h2>
+              <div class="catalog-btns">
+                <input type="radio" style="display: none;" name="section" id="2asda" checked value="0" name="section" class="catalog-btns__input"  data-category="0">
+               <label class="catalog-btns__item" for="2asda" value="0">Все товары</label>
+                {% include "categories.html" %} 
+              </div>
+              <div class="catalog-wrap">
+                {% include "items.html" %}
+                
+              </div>
+              {% if show_more_button %}
+              <a href="/" class="btn catalog__showmore pink-hover">Показать ещё</a>
+              {% endif %}
+            </div>
+          </div>
+        </section>
+    
+        {% include "care_sec_content.html" %}
+      </main>
+{% endblock %}

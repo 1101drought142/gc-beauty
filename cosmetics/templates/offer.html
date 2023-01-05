@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static '/css/service.css' %}">
+<link rel="stylesheet" href="{% static '/css/cart.css' %}">
+<link rel="stylesheet" href="{% static '/css/offer.css' %}">
+
+<main>
+    <div class="container">
+      <div class="breadcrumbs">
+        {% include "breadcrumbs.html" %}
+      </div>
+    </div>
+
+    <section class="offer-sec">
+      <div class="container">
+        <div class="offer-left">
+          <h1 class="offer__title">Оформление заказа</h1>
+          <form class="offer">
+            <div class="offer-subtitle">Персональные данные</div>
+            <input type="text" placeholder="Имя" class="offer__input">
+            <input type="text" placeholder="e-mail" class="offer__input">
+            <input type="tel:88008008080" placeholder="+7 (___)-___-__-__" class="offer__input">
+            <div class="offer-subtitle">Адрес</div>
+            <div class="offer-row">
+              <input type="text" placeholder="Город" class="offer__input">
+              <input type="text" placeholder="Индекс" class="offer__input">
+            </div>
+            <input type="text" placeholder="Улица" class="offer__input">
+            <div class="offer-row">
+              <input type="text" placeholder="Дом" class="offer__input">
+              <input type="text" placeholder="Квартира" class="offer__input">
+            </div>
+            <div class="offer-subtitle">Способ оплаты</div>
+            <input type="radio" name="payment" id="online" checked value="online" class="offer-payment__input">
+            <label for="online" class="offer-payment__label">Оплата онлайн</label>
+            <input type="radio" name="payment" id="courier" value="courier" class="offer-payment__input">
+            <label for="courier" class="offer-payment__label">Оплата курьеру при получении</label>
+          </form>
+        </div>
+        <div class="offer-right">
+          <div class="offer-right__title">Ваш заказ</div>
+          {% for key, item in catalog_items.items %}
+          <div class="offer-item">
+            <div class="offer-item-img-wrap">
+              <img src="/img/catalog/product1.jpg" alt="" class="offer-item-img">
+              <span class="offer-item__delete">&times;</span>
+            </div>
+            <div class="offer-item-content">
+              <div class="offer-item__title">{{item.name}}</div>
+              <div class="offer-item__category">Шампунь для волос</div>
+              <div class="offer-item__price">{{item.quantity}} х {{item.price}} = {{ item.item_price }} ₽</div>
+            </div>
+          </div>
+          {% endfor %}
+          <div class="offer-total cart-total">
+            <div class="cart-total__text">
+              <div>Итого:</div>
+              <div><span class="final-cart-price">{{price}}</span>₽</div>
+            </div>
+            <a href="/" class="btn btn-with-arrow cart-total__btn">
+              <span class="btn__span">Оформить заказ</span>
+              <img src="/static/img/shared/rightArrowTotalBlack.svg" class="btn__arrow">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {% include "connect_footer_form.html" %}
+</main>
+
+{% endblock %}

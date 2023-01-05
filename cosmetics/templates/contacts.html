@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static '/css/contacts.css' %}">
+<link rel="stylesheet" href="{% static '/css/service.css' %}">
+<main>
+    <div class="container">
+      {% include "breadcrumbs.html" %}
+    </div>
+   
+    <section class="contacts-sec">
+      <div class="container">
+        <div class="contacts">
+          <div class="contacts__time">Ежедневно с 9.00 до 20.00</div>
+          <div class="contacts__withlink">Телефон: <a href="tel:84950000022">84950000022</a></div>
+          <div class="contacts__withlink">E-mail: <a href="tel:ask@website.ru">ask@website.ru</a></div>
+          <div class="contacts__sub">По вопросам сотрудничества напишите нам по адресу:</div>
+          <div class="contacts__sub">ur@website.ru или звоните по номеру телефона: +7 495 000 00 22</div>
+        </div>
+      </div>
+      <img src="/static/img/contacts/contacts.jpg" alt="" class="contacts__img">
+    </section>
+
+    {% include "connect_footer_form.html" %}
+
+</main>
+{% endblock %}

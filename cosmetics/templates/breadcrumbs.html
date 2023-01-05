@@ -1,0 +1,8 @@
+{% load static %}
+<div class="breadcrumbs">
+    <a href="/" class="breadcrumbs__item">Главная</a>
+    {% for breadcrumb in breadcrumbs %}
+    <img src="{% static '/img/shared/breadcrumbArrow.svg' %}" alt="" class="breadcrumbs__arrow">
+    <a href="/{{breadcrumb.1}}/" class="breadcrumbs__item current-page">{{breadcrumb.0}}</a>
+    {% endfor %}
+</div>

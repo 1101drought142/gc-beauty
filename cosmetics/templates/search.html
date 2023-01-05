@@ -1,0 +1,19 @@
+{% if catalog_items %}
+    {% for item in catalog_items %}
+    <a href="/catalog-item/{{item.slug}}/" class="search-menu__item">
+        <img src="" alt="" class="search-menu__item--img">
+        <div class="search-menu__item-content">
+        <p class="search-menu__item--title">{{item.name}}</p>
+        <p class="search-menu__item--price">{{item.price}} ₽</p>
+        </div>
+    </a>
+    {% endfor %}
+{% else %}
+    <a class="search-menu__item">
+        <img src="" alt="" class="search-menu__item--img">
+        <div class="search-menu__item-content">
+        <p class="search-menu__item--title">Товар не найден</p>
+        <p class="search-menu__item--price"></p>
+        </div>
+    </a>
+{% endif %}

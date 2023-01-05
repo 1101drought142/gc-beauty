@@ -1,0 +1,250 @@
+.about-hero-sec {
+  padding-top: 30px;
+  background: url(/img/about/aboutHero.jpg) no-repeat center;
+  background-size: cover !important;
+  background-position-y: 100% !important;
+}
+.about-hero__title {
+  margin-top: 79px;
+  text-align: center;
+}
+
+.team {
+  display: flex;
+  margin-top: 39px;
+}
+.team-sec {
+  margin-top: 100px;
+}
+.team__title {
+  font-size: 36px;
+}
+.team-item {
+  width: calc(25% - 35px);
+}
+.team-item:not(:last-child) {
+  margin-right: 47px;
+}
+.team-item__img {
+  height: 292px;
+  max-width: 100%;
+}
+.team-item__name {
+  font-weight: 700;
+  font-size: 20px;
+  margin-top: 19px;
+}
+.team-item__rank {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.cert {
+  display: flex;
+  justify-content: space-between;
+}
+.cert-sec {
+  margin: 100px 0px;
+}
+.cert-item {
+  display: flex;
+  flex-direction: column;
+  width: 28%;
+}
+.cert-item__img {
+  width: 100%;
+  height: 466px;
+}
+.cert-item__title {
+  margin-top: 19px;
+  color: #000;
+  width: 100%;
+  text-transform: uppercase;
+}
+.cert-item__all {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 90px;
+  color: #000;
+  text-decoration: underline;
+  font-size: 16px;
+  display: block;
+}
+
+.modern {
+  display: flex;
+  flex-direction: column;
+}
+.modern-sec {
+  margin-top: 100px;
+}
+.modern__img {
+  width: 100%;
+}
+.modern__text {
+  margin-top: 50px;
+  text-align: right;
+}
+
+@media (max-width: 1300px) {
+  .team-item__name {
+    font-size: 18px;
+    margin-top: 14px;
+  }
+  .team-item__rank {
+    font-size: 16px;
+    margin-top: 8px;
+  }
+  .team-item__img {
+    height: 230px;
+  }
+}
+@media (max-width: 1024px) {
+  .team-item {
+    width: calc(25% - 15px);
+  }
+  .team-item:not(:last-child) {
+    margin-right: 20px;
+  }
+  .team-item__img {
+    height: 180px;
+  }
+  .modern-sec,
+.team-sec {
+    margin-top: 50px;
+  }
+  .modern__text {
+    margin-top: 25px;
+  }
+  .cert-item__img {
+    height: 270px;
+  }
+}
+@media (max-width: 768px) {
+  .team {
+    flex-wrap: wrap;
+  }
+  .team-item {
+    width: calc(50% - 15px);
+    margin-right: 15px !important;
+  }
+  .team-item:nth-child(2n) {
+    margin-right: 0px !important;
+  }
+  .team-item:nth-child(1) {
+    margin-bottom: 20px;
+  }
+  .team-item:nth-child(2) {
+    margin-bottom: 20px;
+  }
+  .team-item__img {
+    height: 250px;
+    width: 100%;
+  }
+  .cert-item__img {
+    height: 230px;
+  }
+  .cert-item__title {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  .cert-sec {
+    margin: 45px 0px;
+  }
+  .cert-item {
+    width: 30%;
+  }
+  .cert-item__all {
+    font-size: 14px;
+    margin-top: 30px;
+  }
+}
+@media (max-width: 640px) {
+  .hero-sec {
+    height: 350px;
+  }
+  .about-hero__title {
+    margin-top: 29px;
+  }
+  .care-sec {
+    margin-top: 37px;
+  }
+  .cert-item__all {
+    font-size: 12px;
+  }
+  .cert {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .cert-item {
+    width: 45%;
+    margin: 15px 0px;
+  }
+  .cert-item__img {
+    height: auto;
+  }
+}
+@media (max-width: 520px) {
+  .team-item__img {
+    height: 200px;
+  }
+  .team__title {
+    font-size: 20px;
+  }
+  .team {
+    margin-top: 10px;
+  }
+  .team-item__name {
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 10px;
+  }
+  .team-item__rank {
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  .modern-sec, .team-sec {
+    margin-top: 40px;
+  }
+  .modern__text {
+    max-width: 333px;
+    margin-left: auto;
+    font-size: 14px;
+  }
+  .hero-sec {
+    height: 310px;
+    padding-top: 14px;
+  }
+  .about-hero-sec {
+    background-image: url(/img/about/aboutHeroMob.jpg);
+  }
+  .breadcrumbs__item {
+    font-size: 12px;
+  }
+  .breadcrumbs__arrow {
+    margin: 0px 10px;
+  }
+  .cert-item {
+    width: 85%;
+  }
+}
+@media (max-width: 420px) {
+  .team-item__img {
+    height: 160px;
+  }
+  .hero__title {
+    width: 100%;
+    max-width: 100%;
+  }
+  .hero-sec {
+    height: 274px;
+  }
+}
+@media (max-width: 365px) {
+  .team-item__img {
+    height: 140px;
+  }
+}/*# sourceMappingURL=about.css.map */

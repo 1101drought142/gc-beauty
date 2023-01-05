@@ -1,0 +1,4 @@
+{% for category in categories %}                
+    <input type="radio" style="display: none;" id="cat_{{ category.id }}" value="{{ category.id }}" name="section" class="catalog-btns__input" id="{{ category.id }}" data-category="{{ category.id }}">
+    <label class="catalog-btns__item" for="cat_{{ category.id }}" data-category="{{ category.id }}">{{ category.name }}</label>
+{% endfor %} 

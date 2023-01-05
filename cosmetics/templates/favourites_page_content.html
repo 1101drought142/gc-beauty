@@ -1,0 +1,12 @@
+{% load static %}
+{% for key,item in catalog_items.items %}
+<a href="/catalog-item/{{item.slug}}/" class="catalog-item favorites-item item-with-id" id="{{key}}">
+    <div class="favorites-item-img-wrap">
+        <button class="catalog-item__favorite"><img src="{% static '/img/shared/favoritePink.svg' %}" alt=""></button>
+        <img src="{% static '/img/catalog/product2.jpg' %}" alt="" class="catalog-item__img">
+        <button class="favorites-item__cart"><img src="{% static '/img/shared/cartBlack.svg' %}" alt=""></button>
+    </div>
+    <p class="catalog-item__title">{{item.name}}</p>
+    <div class="catalog-item__price">{{item.price}} ₽</div>
+</a>
+{% endfor %}

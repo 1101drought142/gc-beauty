@@ -1,0 +1,227 @@
+.offer-sec {
+  margin-top: 17px;
+}
+.offer-sec .container {
+  display: flex;
+  justify-content: space-between;
+}
+.offer__title {
+  font-size: 36px;
+}
+.offer-subtitle {
+  font-size: 20px;
+  margin-top: 30px;
+  margin-bottom: 17px;
+}
+.offer__input {
+  width: 100%;
+  color: #4d4d4d;
+  height: 50px;
+  padding-left: 19px;
+  border: 1px solid #4d4d4d;
+  outline: none !important;
+  margin-bottom: 17px;
+}
+.offer__input::-moz-placeholder {
+  color: #9f9f9f;
+}
+.offer__input:-ms-input-placeholder {
+  color: #9f9f9f;
+}
+.offer__input::placeholder {
+  color: #9f9f9f;
+}
+.offer-row {
+  display: flex;
+  justify-content: space-between;
+}
+.offer-row > * {
+  width: calc(50% - 9px);
+}
+.offer-payment__input {
+  display: none;
+}
+.offer-payment__input:checked + label::after {
+  transform: translateY(-50%);
+}
+.offer-payment__label {
+  display: block;
+  padding-left: 32px;
+  position: relative;
+  line-height: 22px;
+}
+.offer-payment__label:first-of-type {
+  margin-bottom: 9px;
+}
+.offer-payment__label::before {
+  position: absolute;
+  left: 0;
+  content: "";
+  width: 20px;
+  height: 20px;
+  box-sizing: border-box;
+  border: 1px solid #efccca;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.offer-payment__label::after {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background: #efccca;
+  border-radius: 50%;
+  position: absolute;
+  left: 3px;
+  top: 50%;
+  transition: all 0.3s ease;
+  transform: translateY(-50%) scale(0.0001);
+}
+.offer-left {
+  width: 530px;
+}
+.offer-right {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin-top: 95px;
+}
+.offer-item {
+  display: flex;
+  margin-bottom: 26px;
+}
+.offer-item-img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.offer-item-img-wrap {
+  width: 190px;
+  height: 180px;
+  position: relative;
+  margin-right: 12px;
+}
+.offer-item__delete {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  color: #fff;
+  font-size: 28px;
+  width: 36px;
+  height: 36px;
+  background: #efccca;
+  border-radius: 50%;
+  right: 9px;
+  top: 9px;
+  text-align: center;
+  font-weight: 300;
+  line-height: 32px;
+}
+.offer-item-content {
+  display: flex;
+  flex-direction: column;
+}
+.offer-item__title {
+  font-size: 20px;
+}
+.offer-item__category {
+  font-size: 14px;
+  margin-top: 9px;
+}
+.offer-item__price {
+  display: block;
+  font-size: 16px;
+  margin-top: auto;
+}
+.offer-total {
+  margin-top: 15px;
+  margin-left: 0px;
+  margin-right: auto;
+}
+
+@media (max-width: 1024px) {
+  .offer-sec .container {
+    flex-direction: column;
+  }
+  .offer-sec .container > * {
+    width: 100%;
+  }
+  .offer-item {
+    width: 100%;
+    position: relative;
+    padding: 12px 0px;
+    margin-bottom: 0px;
+    border-top: 1px solid #4d4d4d;
+  }
+  .offer-item:last-child {
+    border-bottom: 1px solid #4d4d4d;
+  }
+  .offer-item-img-wrap {
+    position: static;
+  }
+  .offer-item__delete {
+    top: 12px;
+    right: 0;
+    color: #4d4d4d;
+    border: 1px solid #4d4d4d;
+    border-radius: 0px;
+    background: transparent;
+    font-size: 16px;
+    width: 24px;
+    line-height: 23px;
+    height: 24px;
+  }
+  .offer-total {
+    width: 100%;
+  }
+  .offer__title {
+    font-size: 28px;
+  }
+}
+.offer-right__title {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .offer-subtitle {
+    font-size: 16px;
+  }
+}
+@media (max-width: 520px) {
+  .offer-item-img-wrap {
+    width: 120px;
+    height: 120px;
+  }
+  .offer-right {
+    margin-top: 35px;
+  }
+  .offer-right__title {
+    display: block;
+    margin-bottom: 9px;
+  }
+  .offer__input {
+    font-size: 14px;
+  }
+  .offer-total {
+    margin-top: 71px;
+    margin-bottom: 90px;
+  }
+  .offer__title {
+    font-size: 20px;
+  }
+  .offer-payment__label {
+    font-size: 14px;
+  }
+}
+@media (max-width: 420px) {
+  .offer-item__title {
+    font-size: 14px;
+  }
+  .offer-item__category {
+    font-size: 12px;
+  }
+  .offer-item__price {
+    font-size: 12px;
+  }
+}/*# sourceMappingURL=offer.css.map */

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static '/css/service.css' %}">
+<link rel="stylesheet" href="{% static '/css/favorites.css' %}">
+<main>
+    <div class="container">
+      {% include "breadcrumbs.html" %}
+    </div>
+
+    <section class="favorites-sec">
+      <div class="container">
+        <h1 class="favorites__title">Избранное</h1>
+        <div class="favorites">
+            {% include "favourites_page_content.html" %}
+        </div>
+        <a href="/" class="favorites__back">Вернуться к покупкам</a>
+      </div>
+    </section>
+
+    {% include "connect_footer_form.html" %}
+</main>
+{% endblock %}
