@@ -240,7 +240,6 @@ class AjaxSearch(TemplateView):
 class FormResult(View):
     def post(self, request, *args, **kwargs):
         form = ContactForm(request.POST)
-        print(request)
         if form.is_valid():
             try:
                 creted_object = CallbackForm.objects.create(name=form.cleaned_data["name"], phone=form.cleaned_data["phone"])
@@ -253,5 +252,5 @@ class FormResult(View):
                     }
                 )
             except:
-                return HttpResponse(2)
-        return HttpResponse(3)
+                raise Http404
+        raise Http404

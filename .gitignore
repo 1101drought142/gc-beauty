@@ -130,3 +130,5 @@ dmypy.json
 
 .sqlite3
 .DS_Store
+
+cgi-bin/
