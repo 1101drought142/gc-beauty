@@ -50,6 +50,8 @@ class Item(models.Model):
     def __str__(self) -> str:
         return self.name
 
+
+       
 """
 class OrderItem(models.Model):
     item = models.ForeignKey("Item", on_delete=models.SET_NULL, blank=True, null=True, verbose_name = "Товар")

@@ -66,6 +66,7 @@ class Payment(TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super(Payment, self).get_context_data(*args, **kwargs)
         context["breadcrumbs"] = [["Оплата", "payment"]]
+        context["footer_form"] = ContactForm()
         return context
 
 class Shipping(TemplateView):
@@ -73,6 +74,7 @@ class Shipping(TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super(Shipping, self).get_context_data(*args, **kwargs)
         context["breadcrumbs"] = [["Доставка", "shipping"]]
+        context["footer_form"] = ContactForm()
         return context
 
 class Garantees(TemplateView):
@@ -80,6 +82,7 @@ class Garantees(TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super(Garantees, self).get_context_data(*args, **kwargs)
         context["breadcrumbs"] = [["Гарантии", "garantees"]]
+        context["footer_form"] = ContactForm()
         return context
 
 class Contacts(TemplateView):
@@ -102,6 +105,7 @@ class Order(TemplateView):
         context["catalog_items"] = cart_content.return_cart_contents()
         context["extra_js_links"] = ["/js/shared.js", "/js/offer.js"]
         context["price"] = cart_content.calc_price()
+        context["footer_form"] = ContactForm()
         return context
 
 
@@ -185,7 +189,7 @@ class Liked(LikedBase):
         context = super(Liked, self).get_context_data(*args, **kwargs)
         context["breadcrumbs"] = [["Избранное", "favourites"]]
         context["extra_js_links"] = ["/js/favorites.js"]
-        
+        context["footer_form"] = ContactForm()
         return context
 
 class LikedApiPage(LikedBase):
