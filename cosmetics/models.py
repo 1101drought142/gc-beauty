@@ -50,6 +50,19 @@ class Item(models.Model):
     def __str__(self) -> str:
         return self.name
 
+class Order(models.Model):
+    
+    name = models.CharField(max_length=30, verbose_name="Имя")
+    mail = models.CharField(max_length=60, verbose_name="Email")
+    phone = models.CharField(max_length=60, verbose_name="Телефон")
+    city = models.CharField(max_length=60, verbose_name="Город")
+    street = models.CharField(max_length=60, verbose_name="Улица")
+    index = models.IntegerField(verbose_name="Индекс")
+    house = models.IntegerField(verbose_name="Номер дома")
+    flat = models.IntegerField(verbose_name="Номер квартиры")
+
+
+    
 
        
 """
@@ -63,6 +76,9 @@ class CallbackForm(models.Model):
     name = models.CharField(max_length = 63)
     phone = models.CharField(max_length = 25)
     created_time = models.DateField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return str(self.created_time) + " " + self.name
 
 class Types(models.Model):
     name = models.CharField(max_length=30)

@@ -1,13 +1,12 @@
 from django.views.generic import TemplateView, View
-from django.views.generic.edit import CreateView
-from django.http import JsonResponse
-from django.core import serializers
+from django.core.mail import send_mail
 from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, render
-from django.db.models import Q
+from django.db import IntegrityError, transaction
 from .models import ItemCategories, Item, Certificates, Banners, Team, Photos, Tags, Types, CallbackForm
 from .session_stored_products import Cart_Session, Liked_Session
 from .forms import ContactForm
+from django.conf import settings
 
 
 # Create your views here.
@@ -242,11 +241,29 @@ class AjaxSearch(TemplateView):
         return context
 
 class FormResult(View):
+
     def post(self, request, *args, **kwargs):
+        
         form = ContactForm(request.POST)
-        if form.is_valid():
-            try:
+        
+        if not(form.is_valid()):
+            raise Http404
+
+        try:
+
+            with transaction.atomic():
+                
                 creted_object = CallbackForm.objects.create(name=form.cleaned_data["name"], phone=form.cleaned_data["phone"])
+
+                message = f"{creted_object.created_time}\n{creted_object.name} {creted_object.phone}"
+
+                send_mail(
+                    f'Новая заявка от {creted_object.name}', 
+                    message,
+                    settings.DEFAULT_FROM_EMAIL, 
+                    settings.RECIPIENTS_EMAIL
+                )
+                
                 return render(request, "created.html",
                     {
                         "name" : creted_object.name,
@@ -255,6 +272,6 @@ class FormResult(View):
                         "id": creted_object.pk
                     }
                 )
-            except:
-                raise Http404
-        raise Http404
+
+        except Exception as e:
+            raise Http404
