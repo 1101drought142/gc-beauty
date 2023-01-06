@@ -35,5 +35,6 @@ urlpatterns = [
 
     path("api/search_items/", views.AjaxSearch.as_view(), name="ajax_search"),
     path("api/contact_form/", views.FormResult.as_view(), name="ajax_search"),
+    path("api/order_form/", views.FormResult.as_view(), name="ajax_search"),
     
 ]

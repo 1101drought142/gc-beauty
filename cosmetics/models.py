@@ -51,7 +51,7 @@ class Item(models.Model):
         return self.name
 
 class Order(models.Model):
-    
+
     name = models.CharField(max_length=30, verbose_name="Имя")
     mail = models.CharField(max_length=60, verbose_name="Email")
     phone = models.CharField(max_length=60, verbose_name="Телефон")
@@ -60,17 +60,21 @@ class Order(models.Model):
     index = models.IntegerField(verbose_name="Индекс")
     house = models.IntegerField(verbose_name="Номер дома")
     flat = models.IntegerField(verbose_name="Номер квартиры")
-
-
+    payment_type = models.CharField(max_length=60, verbose_name="Способ оплаты")
+    created_time = models.DateField(auto_now_add=True)
+    payed = models.BooleanField()
     
+    def __str__(self) -> str:
+        return str(self.created_time) + " " + str(self.name)
 
-       
-"""
 class OrderItem(models.Model):
     item = models.ForeignKey("Item", on_delete=models.SET_NULL, blank=True, null=True, verbose_name = "Товар")
     quantity = models.IntegerField(verbose_name="Количество")
+    order = models.ForeignKey("Order", on_delete=models.SET_NULL, blank=True, null=True)
 
-"""
+    def __str__(self) -> str:
+        return str(self.item.name) + " " + str(self.quantity)
+
 
 class CallbackForm(models.Model):
     name = models.CharField(max_length = 63)

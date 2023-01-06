@@ -11,7 +11,7 @@ admin.site.register(Types)
 admin.site.register(Team)
 
 class CallbackFormAdmin(admin.ModelAdmin):
-    readonly_fields = ('created_time',)
+    readonly_fields = ('created_time', "name", "phone")
 admin.site.register(CallbackForm, CallbackFormAdmin)
 
 
