@@ -58,12 +58,13 @@ class Order(models.Model):
     city = models.CharField(max_length=60, verbose_name="Город")
     street = models.CharField(max_length=60, verbose_name="Улица")
     index = models.IntegerField(verbose_name="Индекс")
-    house = models.IntegerField(verbose_name="Номер дома")
-    flat = models.IntegerField(verbose_name="Номер квартиры")
+    house = models.CharField(max_length=60, verbose_name="Номер дома")
+    flat = models.CharField(max_length=60, verbose_name="Номер квартиры")
     payment_type = models.CharField(max_length=60, verbose_name="Способ оплаты")
     created_time = models.DateField(auto_now_add=True)
     payed = models.BooleanField()
-    
+    total = models.IntegerField()
+
     def __str__(self) -> str:
         return str(self.created_time) + " " + str(self.name)
 

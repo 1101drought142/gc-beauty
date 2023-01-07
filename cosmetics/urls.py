@@ -17,7 +17,7 @@ urlpatterns = [
     path("garantees/", views.Garantees.as_view(), name="garantees"),
     path("contacts/", views.Contacts.as_view(), name="contacts"),
 
-    path("order/", views.Order.as_view(), name="order"),
+    path("order/", views.OrderTemplate.as_view(), name="order"),
     path("finish_order/", views.CreatedOrder.as_view(), name="finish_order"),
     
     
@@ -35,6 +35,6 @@ urlpatterns = [
 
     path("api/search_items/", views.AjaxSearch.as_view(), name="ajax_search"),
     path("api/contact_form/", views.FormResult.as_view(), name="ajax_search"),
-    path("api/order_form/", views.FormResult.as_view(), name="ajax_search"),
+    path("api/order_form/", views.OrderResult.as_view(), name="ajax_search"),
     
 ]

@@ -3,9 +3,9 @@ from django.core.mail import send_mail
 from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.db import IntegrityError, transaction
-from .models import ItemCategories, Item, Certificates, Banners, Team, Photos, Tags, Types, CallbackForm
+from .models import ItemCategories, Item, Certificates, Banners, Team, Photos, Tags, Types, CallbackForm, OrderItem, Order
 from .session_stored_products import Cart_Session, Liked_Session
-from .forms import ContactForm
+from .forms import ContactForm, OrderForm
 from django.conf import settings
 
 
@@ -95,7 +95,7 @@ class Contacts(TemplateView):
 
 
 
-class Order(TemplateView):
+class OrderTemplate(TemplateView):
     template_name = "offer.html"
     def get_context_data(self, *args, **kwargs):
         cart_content = Cart_Session(self.request)
@@ -275,3 +275,76 @@ class FormResult(View):
 
         except Exception as e:
             raise Http404
+
+class OrderResult(View):
+
+    def post(self, request, *args, **kwargs):
+        
+        form = OrderForm(request.POST)
+
+        cart_content = Cart_Session(request)
+        in_cart_items = cart_content.return_cart_contents()
+        
+
+        
+        if not(form.is_valid()) and in_cart_items:
+            raise Http404
+    
+        print(form.is_valid())
+        creted_object = Order.objects.create(
+            name=form.cleaned_data["name"], 
+            mail=form.cleaned_data["mail"],
+            phone=form.cleaned_data["phone"],
+            city=form.cleaned_data["city"],
+            street=form.cleaned_data["street"],
+            index=form.cleaned_data["index"],
+            house=form.cleaned_data["house"],
+            flat=form.cleaned_data["flat"],
+            payment_type=form.cleaned_data["payment_type"],
+            payed=False,
+            total=cart_content.calc_price(),
+        )
+        order_items = []
+        for key in in_cart_items:
+            temp_item = get_object_or_404(Item, pk=key)
+            order_item = OrderItem.objects.create(
+                item=temp_item, 
+                quantity=in_cart_items[key]["quantity"],
+                order=creted_object,
+            )
+            order_items.append(order_item)
+
+        
+    
+
+        message = f"{creted_object.created_time}\n"\
+                f"Имя: {creted_object.name}\n"\
+                f"Телефон: {creted_object.phone}\n"\
+                f"Почта: {creted_object.mail}\n"\
+                f"Адрес: {creted_object.city} {creted_object.street} {creted_object.house} {creted_object.flat} {creted_object.index}"\
+                f"Способ оплаты : {creted_object.payment_type}\n\n\n"
+        
+        for item in order_items:
+            message += f"{item.item.name}  {item.quantity}\n"
+                    
+
+        send_mail(
+            f'Новый заказ от {creted_object.name}', 
+            message,
+            settings.DEFAULT_FROM_EMAIL, 
+            settings.RECIPIENTS_EMAIL
+        )
+        
+        return render(request, "created_order.html",
+            {
+                "name" : creted_object.name,
+                "phone": creted_object.phone,
+                "date": creted_object.created_time,
+                "id": creted_object.pk,
+                "mail": creted_object.mail,
+                "adress": f"{creted_object.city}, {creted_object.street}, {creted_object.house}, {creted_object.flat}, {creted_object.index}",
+                "payment": creted_object.payment_type,
+            }
+        )
+
+        

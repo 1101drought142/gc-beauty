@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static '/css/thanks.css' %}">
+<main>
+    <div class="container">
+      {% include "breadcrumbs.html" %}
+    </div>
+   
+    <section class="thanks-sec">
+      <div class="container">
+        <h1 class="thanks__title">Заказ №{{id}} от {{date}} оформлен!</h1>
+        <div class="thanks-data">
+          <div class="thanks-data__item">
+            <span>Имя:</span>
+            <span>{{name}}</span>
+          </div>
+          <div class="thanks-data__item">
+            <span>E-mail:</span>
+            <span>{{mail}}</span>
+          </div>
+          <div class="thanks-data__item">
+            <span>Телефон:</span>
+            <span>{{phone}}</span>
+          </div>
+          <div class="thanks-data__item">
+            <span>Адрес:</span>
+            <span>{{adress}}</span>
+          </div>
+          <div class="thanks-data__item">
+            <span>Способ оплаты:</span>
+            <span>{{payment}}</span>
+          </div>
+        </div>
+        <div class="thanks__payment">Ожидайте с вами скоро свяжется оператор</div>
+      </div>
+    </section>
+
+  </main>
+{% endblock %}

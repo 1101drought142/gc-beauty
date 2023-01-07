@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.admin.options import TabularInline
-from .models import ItemCategories, Item, Certificates, Banners, Tags, Types, Team, Photos, CallbackForm
+from .models import ItemCategories, Item, Certificates, Banners, Tags, Types, Team, Photos, CallbackForm, Order, OrderItem
 # Register your models here.
 
 admin.site.register(ItemCategories)
@@ -20,11 +20,18 @@ class ImageAdminInline(TabularInline):
         model = Photos
 
 
-
 @admin.register(Item)
 class ItemModelAdmin(admin.ModelAdmin):
     inlines = (ImageAdminInline,)
 
-@admin.register(Photos)
-class PhotosModelAdmin(admin.ModelAdmin):
-    fields = ('src', 'product')
+
+class OrderItemAdminInline(TabularInline):
+    extra=1
+    model=OrderItem
+    readonly_fields = ('item','quantity','order',)
+    can_delete = False
+
+@admin.register(Order)
+class OrderModelAdmin(admin.ModelAdmin):
+    inlines = (OrderItemAdminInline, )
+    readonly_fields = [field.name for field in Order._meta.fields]

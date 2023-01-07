@@ -14,7 +14,7 @@ class OrderForm(forms.Form):
     street = forms.CharField(max_length=100, required=True, help_text = "Улица")
 
     index = forms.IntegerField(required=True, help_text = "Индекс")
-    house = forms.IntegerField(required=True, help_text = "Дом")
-    flat = forms.IntegerField(required=True, help_text = "Квартира")
+    house = forms.CharField(max_length=10,required=True, help_text = "Дом")
+    flat = forms.CharField(max_length=10,required=True, help_text = "Квартира")
 
     payment_type = forms.CharField(max_length=100, required=True, help_text = "Cпособ оплаты")
