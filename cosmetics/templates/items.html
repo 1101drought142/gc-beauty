@@ -1,7 +1,7 @@
 {% load static %}
 {% for item in catalog_items %}
 <a href="/catalog-item/{{item.slug}}/" data-id="{{item.id}}" class="catalog-item catalog-item-{{ forloop.counter }}">
-    <button  class="catalog-item__favorite">
+    <button  class="catalog-item__favorite {% if item.id in liked_objects %} active {% endif %}">
         <img src="/static/img/shared/favoriteBlack.svg" class="catalog-item__favorite--img " alt="">
         <img src="/static/img/shared/favoritePink.svg" class="catalog-item__favorite--img-active" alt="">
     </button>

@@ -14,6 +14,9 @@ class Home(TemplateView):
     template_name = "home.html"
     def get_context_data(self, *args, **kwargs):
         context = super(Home, self).get_context_data(*args, **kwargs)
+        cart_content = Liked_Session(self.request)
+        
+        context["liked_objects"] = [ int(x) for x in list(cart_content.return_cart_contents().keys()) ]
         context["catalog_items"] = Item.objects.all()
         context["home_banners"] = Banners.objects.all()
         context["categories"] = ItemCategories.objects.filter(father_categorie__isnull=True)
